@@ -1,115 +1,313 @@
-# PRIVACY POLICY
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - MemeCare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --accent: #818cf8;
+            --accent-hover: #a5b4fc;
+            --divider: rgba(255, 255, 255, 0.1);
+            --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+        }
 
-**Last updated:** April 20, 2026
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-## 1. Introduction
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-Welcome to **[Your App Name]** ("we", "our", "us").
-We are committed to protecting your privacy and ensuring that your personal information is handled in a safe and responsible manner.
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-This Privacy Policy explains how we collect, use, and safeguard your information when you use our mobile application.
+        .lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
 
----
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
 
-## 2. Information We Collect
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: var(--accent);
+        }
 
-We may collect the following types of information:
+        .lang-btn.active {
+            background: var(--accent);
+            color: #ffffff;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(129, 140, 248, 0.5);
+        }
 
-### a. Personal Information
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
 
-* Name
-* Email address
-* Phone number
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(to right, #ffffff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.025em;
+        }
 
-### b. Device Information
+        .last-updated {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-* Device ID
-* Operating system
-* App version
+        .last-updated::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
 
-### c. Camera Access
+        hr {
+            border: 0;
+            height: 1px;
+            background: var(--divider);
+            margin: 32px 0;
+        }
 
-Our application requests access to your device’s camera for the following purpose:
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--accent);
+            letter-spacing: -0.01em;
+        }
 
-* Scanning QR codes
-* Capturing images when required by specific features
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #e2e8f0;
+        }
 
-We do **NOT** store, record, or share camera data unless explicitly required and with your consent.
+        p {
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+        }
 
----
+        ul {
+            margin-bottom: 20px;
+            padding-left: 24px;
+            color: var(--text-secondary);
+        }
 
-## 3. How We Use Your Information
+        li {
+            margin-bottom: 8px;
+            font-size: 0.975rem;
+        }
 
-We use the collected information to:
+        li strong {
+            color: var(--text-primary);
+        }
 
-* Provide and maintain our services
-* Process transactions and bookings
-* Improve user experience
-* Ensure app security and prevent fraud
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            font-weight: 500;
+        }
 
----
+        a:hover {
+            color: var(--accent-hover);
+            text-decoration: underline;
+        }
 
-## 4. Data Sharing and Disclosure
+        .footer {
+            margin-top: 48px;
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
 
-We do **NOT sell** your personal data.
-
-We may share data with:
-
-* Trusted service providers (e.g., payment gateways, backend services)
-* Legal authorities if required by law
-
----
-
-## 5. Data Retention
-
-We retain your information only as long as necessary for:
-
-* Providing services
-* Legal and accounting purposes
-
----
-
-## 6. Data Security
-
-We implement appropriate technical and organizational measures to protect your data from unauthorized access, alteration, or disclosure.
-
----
-
-## 7. Your Rights
-
-You have the right to:
-
-* Access your personal data
-* Request correction or deletion
-* Withdraw consent at any time
-
-To exercise these rights, contact us at:
-📧 **[[your-email@example.com](mailto:your-email@example.com)]**
-
----
-
-## 8. Children's Privacy
-
-Our app does not knowingly collect data from children under 13 years of age.
-
----
-
-## 9. Third-Party Services
-
-Our app may use third-party services (e.g., analytics, payment providers) that have their own privacy policies.
-
----
-
-## 10. Changes to This Privacy Policy
-
-We may update this Privacy Policy from time to time.
-Any changes will be posted on this page with an updated date.
-
----
-
-## 11. Contact Us
-
-If you have any questions about this Privacy Policy, please contact us:
-
-📧 Email: **[[your-email@example.com](mailto:your-email@example.com)]**
-🌐 Website: **https://[your-domain].com**
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 10px;
+            }
+            .card {
+                padding: 24px;
+                border-radius: 16px;
+            }
+            h1 {
+                font-size: 1.75rem;
+            }
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lang-switch">
+            <a href="privacy_policy.html" class="lang-btn active">English</a>
+            <a href="privacy_policy_vi.html" class="lang-btn">Tiếng Việt</a>
+        </div>
+        <div class="card">
+            <h1>Privacy Policy for MemeCare</h1>
+            <div class="last-updated">Last Updated: May 22, 2026</div>
+            
+            <p>Welcome to <strong>MemeCare</strong> ("the App"), a virtual pet raising game companion featuring Pepe, Cheems, GigaChad, and other characters, developed by <strong>Nguyễn Kim Khánh</strong> ("we", "us", or "our").</p>
+            <p>We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and share information when you use our App.</p>
+            
+            <hr>
+            
+            <h2>1. Information We Collect and How We Use It</h2>
+            
+            <h3>A. Local Data (Stored on Your Device)</h3>
+            <p>MemeCare is designed to store most of your game progress locally on your device. We use Android's local SQLite/Room database to store:</p>
+            <ul>
+                <li><strong>Virtual Pet Stats:</strong> Hunger, health, happiness, karma, and coin counts.</li>
+                <li><strong>Game Progression:</strong> Level, XP, and unlocked meme cards.</li>
+                <li><strong>App Settings:</strong> Preferences regarding notification schedules and overlay settings.</li>
+            </ul>
+            <p><em>This data remains on your device and is not sent to our servers.</em></p>
+            
+            <h3>B. Device Permissions</h3>
+            <p>To provide the core features of the App, we request the following permissions on your device:</p>
+            <ul>
+                <li><strong>Draw Over Other Apps (<code>SYSTEM_ALERT_WINDOW</code>):</strong> Used by our <code>OverlayPetService</code> to display the interactive floating virtual pet companion on top of other applications.</li>
+                <li><strong>Post Notifications (<code>POST_NOTIFICATIONS</code>):</strong> Used to send you alerts, reminders, and updates about your pet’s needs (e.g., when your pet is hungry or has completed work).</li>
+                <li><strong>Run Foreground Service (<code>FOREGROUND_SERVICE</code> & <code>FOREGROUND_SERVICE_SPECIAL_USE</code>):</strong> Required to keep the floating pet companion running smoothly in the background.</li>
+                <li><strong>Receive Boot Completed (<code>RECEIVE_BOOT_COMPLETED</code>):</strong> Used to reschedule local alerts and alarms when your device restarts.</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>2. Third-Party Services We Use</h2>
+            <p>We integrate several third-party SDKs to support ads, analytics, and messaging. These third parties may collect information about you in accordance with their own privacy policies.</p>
+            
+            <h3>A. Google AdMob (Advertising)</h3>
+            <p>The App uses Google AdMob to display banner and rewarded ads. AdMob collects:</p>
+            <ul>
+                <li>Device identifiers (such as Android Advertising ID).</li>
+                <li>Approximate location (IP address).</li>
+                <li>Ad interaction data (clicks, views).</li>
+                <li>For more information, please read the <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google Partner Privacy Policy</a>.</li>
+            </ul>
+            
+            <h3>B. Firebase (Analytics, Performance, and Messaging)</h3>
+            <p>We use Firebase services (provided by Google LLC) to monitor and improve App performance and send notifications:</p>
+            <ul>
+                <li><strong>Firebase Analytics:</strong> Collects anonymous information about how you interact with the App (e.g., screens visited, buttons clicked) to help us improve the game experience.</li>
+                <li><strong>Firebase Crashlytics:</strong> Collects anonymized crash reports, device state info, and stack traces to help us fix bugs. For debugging purposes, it may log the Firebase Cloud Messaging token.</li>
+                <li><strong>Firebase Performance Monitoring:</strong> Collects performance metrics to optimize loading times.</li>
+                <li><strong>Firebase Remote Config:</strong> Fetches configuration values (such as ad frequency parameters) dynamically.</li>
+                <li><strong>Firebase Cloud Messaging (FCM):</strong> Uses your device registration token to deliver push notifications.</li>
+                <li>For details, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy & Terms</a>.</li>
+            </ul>
+            
+            <h3>C. Gemini AI / Google AI Studio (Generative AI)</h3>
+            <p>The App is configured to support the <strong>Google Gemini API</strong> (via server-side or client-side connection) to generate dynamic dialogue or interactive AI responses.</p>
+            <ul>
+                <li>When using AI features, text prompts or context might be sent to Google's Gemini API.</li>
+                <li>This data is processed in accordance with Google's API Terms and Privacy Policy. Do not enter personal or sensitive information into the App.</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>3. Data Sharing and Disclosure</h2>
+            <p>We do not sell, rent, or trade your personal data. Your information is only shared with:</p>
+            <ul>
+                <li><strong>Service Providers:</strong> Google (for Firebase and AdMob) as described above to enable analytics, advertisements, and notification delivery.</li>
+                <li><strong>Legal Compliance:</strong> If required by law, regulation, or legal process.</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>4. Data Retention and Deletion</h2>
+            <p>Since your game data is stored locally:</p>
+            <ul>
+                <li><strong>Resetting Game Data:</strong> You can delete all your local pet progress and unlocked cards at any time by going to the App Settings and selecting <strong>"REINICIAR VIDA" (Reset Life / Reset Game)</strong>.</li>
+                <li><strong>Uninstalling the App:</strong> Uninstalling the App will permanently delete all local game data from your device storage.</li>
+                <li><strong>Third-party Data:</strong> Firebase Analytics and Crashlytics data are automatically deleted or anonymized by Google in accordance with their standard retention cycles.</li>
+            </ul>
+            
+            <hr>
+            
+            <h2>5. Children's Privacy</h2>
+            <p>Our App does not knowingly collect personally identifiable information from children under the age of 13. If you are a parent or guardian and believe your child has provided personal information to us, please contact us so we can take necessary actions.</p>
+            
+            <hr>
+            
+            <h2>6. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+            
+            <hr>
+            
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions or suggestions about this Privacy Policy, do not hesitate to contact us at:</p>
+            <ul>
+                <li><strong>Developer:</strong> Nguyễn Kim Khánh</li>
+                <li><strong>Email:</strong> <a href="mailto:v.khanhnk3@vinsmartfuture.tech">v.khanhnk3@vinsmartfuture.tech</a></li>
+            </ul>
+        </div>
+        <div class="footer">
+            &copy; 2026 MemeCare. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>
