@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính sách Quyền riêng tư | Chúa Tể Sĩ Diện</title>
+    <meta name="description" content="Chính sách quyền riêng tư chính thức của ứng dụng Chúa Tể Sĩ Diện (Karma Simulator). Tìm hiểu cách chúng tôi bảo vệ thông tin và dữ liệu cá nhân của bạn.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --secondary: #a855f7;
+            --secondary-hover: #9333ea;
+            --bg-light: #f8fafc;
+            --bg-dark: #090d16;
+            --card-light: rgba(255, 255, 255, 0.8);
+            --card-dark: rgba(17, 24, 39, 0.7);
+            --text-light: #1e293b;
+            --text-dark: #f1f5f9;
+            --muted-light: #64748b;
+            --muted-dark: #94a3b8;
+            --border-light: rgba(226, 232, 240, 0.8);
+            --border-dark: rgba(51, 65, 85, 0.5);
+            --glow: rgba(99, 102, 241, 0.15);
+            
+            /* Current Active Theme Variables */
+            --bg: var(--bg-dark);
+            --card: var(--card-dark);
+            --text: var(--text-dark);
+            --muted: var(--muted-dark);
+            --border: var(--border-dark);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .light-theme {
+            --bg: var(--bg-light);
+            --card: var(--card-light);
+            --text: var(--text-light);
+            --muted: var(--muted-light);
+            --border: var(--border-light);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            transition: var(--transition);
+            line-height: 1.625;
+            overflow-x: hidden;
+        }
+
+        /* Ambient background glow effects */
+        .glow-orb {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--glow) 0%, rgba(99, 102, 241, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(80px);
+        }
+        .orb-1 { top: -20%; right: -10%; }
+        .orb-2 { bottom: -20%; left: -10%; }
+
+        /* Navigation Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(var(--bg) === var(--bg-dark) ? '9, 13, 22' : '248, 250, 252', 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .logo-text {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-toggle {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-toggle:hover {
+            background: var(--border);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Banner */
+        .hero {
+            padding: 4rem 2rem 2rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--primary);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text), var(--muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        /* Main Layout Grid */
+        .main-layout {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem 5rem 2rem;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+        }
+
+        /* Sidebar Table of Contents */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+            height: calc(100vh - 120px);
+            overflow-y: auto;
+            padding-right: 1rem;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .toc-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--muted);
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc-link {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: var(--transition);
+            border-left: 2px solid transparent;
+        }
+
+        .toc-link:hover, .toc-link.active {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.08);
+            border-left-color: var(--primary);
+            padding-left: 1rem;
+        }
+
+        /* Content Area */
+        .content {
+            background: var(--card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-block {
+            margin-bottom: 3.5rem;
+            scroll-margin-top: 120px;
+        }
+
+        .section-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-block h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .section-block h2::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            border-radius: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+        }
+
+        .section-block h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem 0;
+            color: var(--text);
+        }
+
+        .section-block p {
+            margin-bottom: 1rem;
+            color: var(--muted);
+        }
+
+        .section-block ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .section-block li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--muted);
+        }
+
+        .section-block li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        /* Tech Detail Tables */
+        .info-table-container {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .info-table th {
+            background: rgba(99, 102, 241, 0.08);
+            color: var(--text);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .info-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--muted);
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Language Toggle styling & visibility */
+        [lang="en"] {
+            display: none;
+        }
+
+        .lang-en [lang="vi"] {
+            display: none;
+        }
+
+        .lang-en [lang="en"] {
+            display: block;
+        }
+
+        /* Floating Back to Top Button */
+        .btn-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 99;
+        }
+
+        .btn-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btn-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        /* Search Box in Navigation or Sidebar */
+        .search-container {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(var(--bg), 0.5);
+            color: var(--text);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.85rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        /* Footer styling */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.875rem;
+            position: relative;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                display: none; /* Hide TOC on smaller screens */
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .sidebar, header, .btn-top, .glow-orb, footer {
+                display: none !important;
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+                padding: 0;
+            }
+            .content {
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                background: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Glow Orbs -->
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-section">
+                <div class="logo-icon">👑</div>
+                <span class="logo-text">Chúa Tể Sĩ Diện</span>
+            </a>
+            <div class="nav-actions">
+                <button class="btn-toggle" id="langToggle">
+                    🌐 <span id="langText">English</span>
+                </button>
+                <button class="btn-toggle" id="themeToggle">
+                    🌙 <span id="themeText">Giao diện</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Header -->
+    <section class="hero">
+        <div class="badge" lang="vi">Pháp lý & Quyền riêng tư</div>
+        <div class="badge" lang="en">Legal & Privacy</div>
+        
+        <h1 lang="vi">Chính sách Quyền riêng tư</h1>
+        <h1 lang="en">Privacy Policy</h1>
+        
+        <p lang="vi">Cập nhật lần cuối: ngày 24 tháng 5 năm 2026</p>
+        <p lang="en">Last Updated: May 24, 2026</p>
+    </section>
+
+    <!-- Main Section Container -->
+    <main class="main-layout">
+        <!-- Sticky Sidebar Table of Contents -->
+        <aside class="sidebar">
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="searchDocs" placeholder="Tìm kiếm / Search...">
+            </div>
+            
+            <div class="toc-title" lang="vi">Mục lục</div>
+            <div class="toc-title" lang="en">Table of Contents</div>
+            
+            <ul class="toc-list">
+                <li class="toc-item"><a href="#intro" class="toc-link active" lang="vi">1. Giới thiệu tổng quan</a><a href="#intro" class="toc-link active" lang="en">1. Introduction</a></li>
+                <li class="toc-item"><a href="#data-collect" class="toc-link" lang="vi">2. Dữ liệu thu thập</a><a href="#data-collect" class="toc-link" lang="en">2. Data Collected</a></li>
+                <li class="toc-item"><a href="#data-usage" class="toc-link" lang="vi">3. Sử dụng thông tin</a><a href="#data-usage" class="toc-link" lang="en">3. How We Use Data</a></li>
+                <li class="toc-item"><a href="#third-parties" class="toc-link" lang="vi">4. Bên thứ ba & Quảng cáo</a><a href="#third-parties" class="toc-link" lang="en">4. Third-Party Services</a></li>
+                <li class="toc-item"><a href="#local-storage" class="toc-link" lang="vi">5. Lưu trữ cục bộ trên máy</a><a href="#local-storage" class="toc-link" lang="en">5. Local Device Storage</a></li>
+                <li class="toc-item"><a href="#children" class="toc-link" lang="vi">6. Quyền riêng tư trẻ em</a><a href="#children" class="toc-link" lang="en">6. Children's Privacy</a></li>
+                <li class="toc-item"><a href="#user-rights" class="toc-link" lang="vi">7. Quyền của người dùng</a><a href="#user-rights" class="toc-link" lang="en">7. User Rights</a></li>
+                <li class="toc-item"><a href="#contact" class="toc-link" lang="vi">8. Thông tin liên hệ</a><a href="#contact" class="toc-link" lang="en">8. Contact Information</a></li>
+            </ul>
+        </aside>
+
+        <!-- Document Content Area -->
+        <article class="content">
+            <!-- 1. Giới thiệu tổng quan -->
+            <section id="intro" class="section-block">
+                <h2 lang="vi">Giới thiệu tổng quan</h2>
+                <h2 lang="en">Introduction</h2>
+                
+                <div lang="vi">
+                    <p>Chào mừng bạn đến với <strong>Chúa Tể Sĩ Diện</strong> (sau đây gọi là "Ứng dụng"), một trò chơi mô phỏng/giả lập cuộc đời châm biếm được phát triển dành cho thiết bị di động Android. Chúng tôi tôn trọng quyền riêng tư của bạn và cam kết bảo vệ thông tin cá nhân của người dùng.</p>
+                    <p>Chính sách Quyền riêng tư này giải thích cách chúng tôi xử lý dữ liệu và thông tin cá nhân của bạn khi bạn tải xuống, cài đặt và trải nghiệm Ứng dụng. Bằng việc tiếp tục sử dụng Ứng dụng, bạn đồng ý với các điều khoản được quy định trong chính sách này.</p>
+                </div>
+                <div lang="en">
+                    <p>Welcome to <strong>Chúa Tể Sĩ Diện</strong> (also known as "Karma Simulator" or the "App"), a satirical life simulator game developed for Android mobile devices. We respect your privacy and are committed to protecting our users' personal information.</p>
+                    <p>This Privacy Policy explains how we process your data and personal information when you download, install, and experience the App. By continuing to use the App, you agree to the terms outlined in this policy.</p>
+                </div>
+            </section>
+
+            <!-- 2. Dữ liệu thu thập -->
+            <section id="data-collect" class="section-block">
+                <h2 lang="vi">Dữ liệu chúng tôi thu thập</h2>
+                <h2 lang="en">Data We Collect</h2>
+                
+                <div lang="vi">
+                    <p>Để đảm bảo trò chơi vận hành mượt mà và cải thiện trải nghiệm người dùng, chúng tôi thu thập một số danh mục dữ liệu cụ thể dưới đây:</p>
+                    <h3>Dữ liệu thiết bị & Kỹ thuật</h3>
+                    <p>Thông qua các dịch vụ phân tích hệ thống tự động, Ứng dụng thu thập dữ liệu kỹ thuật không định danh như: loại thiết bị di động, hệ điều hành Android, mã định danh quảng cáo (Advertising ID), địa chỉ IP, ngôn ngữ cài đặt trên máy và nhật ký sự cố ứng dụng (crash logs).</p>
+                    
+                    <h3>Dữ liệu hoạt động trong trò chơi (Gameplay Data)</h3>
+                    <p>Chúng tôi theo dõi các sự kiện tương tác trong game như: việc bắt đầu/hoàn thành nhiệm vụ ngày (Quest), lựa chọn các phương án tình huống, các vật phẩm trang bị đã mua bằng tiền ảo trong game, và các kết thúc (Ending) mà bạn đạt được.</p>
+
+                    <h3>Không thu thập thông tin định danh trực tiếp</h3>
+                    <p>Ứng dụng không bắt buộc bạn phải đăng ký tài khoản, đăng nhập hoặc cung cấp các thông tin định danh trực tiếp như họ tên, số điện thoại, địa chỉ nhà, email, hoặc danh bạ cá nhân.</p>
+                </div>
+                
+                <div lang="en">
+                    <p>To ensure smooth game performance and improve user experience, we collect specific categories of data outlined below:</p>
+                    <h3>Device & Technical Data</h3>
+                    <p>Through automated system analysis services, the App collects non-identifying technical data such as: mobile device model, Android OS version, advertising identifier (Advertising ID), IP address, device language settings, and application crash logs.</p>
+                    
+                    <h3>Gameplay Interaction Data</h3>
+                    <p>We track gameplay interaction events such as: starting/completing daily quests, selecting scenario decisions, equipment/accessories purchased with in-game virtual currency, and endings unlocked.</p>
+
+                    <h3>No Collection of Direct Identifiable Information</h3>
+                    <p>The App does not require you to register an account, log in, or provide direct personal identifiers such as your full name, phone number, physical address, email address, or personal contacts.</p>
+                </div>
+            </section>
+
+            <!-- 3. Sử dụng thông tin -->
+            <section id="data-usage" class="section-block">
+                <h2 lang="vi">Mục đích sử dụng dữ liệu</h2>
+                <h2 lang="en">How We Use Your Data</h2>
+                
+                <div lang="vi">
+                    <p>Chúng tôi sử dụng thông tin thu thập được cho các mục đích hợp pháp sau:</p>
+                    <ul>
+                        <li><strong>Duy trì & Vận hành:</strong> Lưu trữ tiến trình chơi game cục bộ để bạn không bị mất dữ liệu khi tắt game.</li>
+                        <li><strong>Phân tích & Tối ưu hóa:</strong> Theo dõi các tính năng được yêu thích hoặc các màn chơi quá khó/dễ để điều chỉnh cân bằng game.</li>
+                        <li><strong>Sửa lỗi & Ổn định:</strong> Thu thập thông báo lỗi thông qua Firebase Crashlytics để phát hiện sự cố hệ thống và phát hành bản vá kịp thời.</li>
+                        <li><strong>Cung cấp nội dung động:</strong> Đồng bộ các thông số trò chơi từ xa thông qua Firebase Remote Config.</li>
+                    </ul>
+                </div>
+                
+                <div lang="en">
+                    <p>We use the collected information for the following legitimate purposes:</p>
+                    <ul>
+                        <li><strong>Maintain & Operate:</strong> Saving game progress locally so your data is preserved when you exit the app.</li>
+                        <li><strong>Analytics & Optimization:</strong> Monitoring popular features or levels that are too difficult or easy to adjust game balance.</li>
+                        <li><strong>Bug Fixing & Stability:</strong> Collecting error reports via Firebase Crashlytics to diagnose issues and release prompt updates.</li>
+                        <li><strong>Provide Dynamic Content:</strong> Synchronizing remote game configurations and constants via Firebase Remote Config.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 4. Bên thứ ba & Quảng cáo -->
+            <section id="third-parties" class="section-block">
+                <h2 lang="vi">Dịch vụ từ bên thứ ba</h2>
+                <h2 lang="en">Third-Party Services</h2>
+                
+                <div lang="vi">
+                    <p>Ứng dụng tích hợp một số thư viện SDK phần mềm của bên thứ ba để hỗ trợ quảng cáo và phân tích hệ thống. Dưới đây là danh sách chi tiết:</p>
+                    
+                    <div class="info-table-container">
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>Đối tác / SDK</th>
+                                    <th>Mục đích</th>
+                                    <th>Chính sách bảo mật liên kết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Google Firebase (Analytics, Crashlytics, Perf, Remote Config)</td>
+                                    <td>Phân tích hành vi game, tối ưu hiệu năng, báo cáo lỗi sập nguồn và tải cấu hình từ xa.</td>
+                                    <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy Policy</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Google AdMob</td>
+                                    <td>Hiển thị quảng cáo biểu ngữ (Banner Ads) và video nhận thưởng (Rewarded Ads) để duy trì dự án.</td>
+                                    <td><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google Ads Policy</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Các đối tác dịch vụ này có thể thu thập thông tin định danh thiết bị hoặc thông tin quảng cáo của bạn theo chính sách bảo mật riêng của họ.</p>
+                </div>
+                
+                <div lang="en">
+                    <p>The App integrates third-party Software Development Kits (SDKs) for analytics and advertising. Below is the detailed list:</p>
+                    
+                    <div class="info-table-container">
+                        <table class="info-table">
+                            <thead>
+                                <tr>
+                                    <th>Partner / SDK</th>
+                                    <th>Purpose</th>
+                                    <th>Privacy Policy Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Google Firebase (Analytics, Crashlytics, Perf, Remote Config)</td>
+                                    <td>Gameplay analytics, performance monitoring, crash logs reporting, and remote settings fetch.</td>
+                                    <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Firebase Privacy Policy</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Google AdMob</td>
+                                    <td>Displaying banner ads and rewarded video ads to support project development.</td>
+                                    <td><a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer">Google Ads Policy</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>These partners may collect your device identifiers or advertising identifiers subject to their respective privacy policies.</p>
+                </div>
+            </section>
+
+            <!-- 5. Lưu trữ cục bộ -->
+            <section id="local-storage" class="section-block">
+                <h2 lang="vi">Cơ chế lưu trữ dữ liệu cục bộ</h2>
+                <h2 lang="en">Local Device Storage</h2>
+                
+                <div lang="vi">
+                    <p>Để lưu trữ trạng thái trò chơi của bạn (như lượng tiền ảo, chỉ số Sĩ Diện, danh sách vật phẩm phụ kiện đã sở hữu và lịch sử màn chơi), Ứng dụng sử dụng hệ cơ sở dữ liệu SQLite cục bộ (Room Database) được cài đặt trực tiếp trên thiết bị của bạn.</p>
+                    <p>Dữ liệu lưu trữ này hoàn toàn nằm dưới quyền kiểm soát của bạn và không được tải lên bất kỳ máy chủ cá nhân nào của nhà phát triển. Dữ liệu sẽ tự động được xóa bỏ khi bạn thực hiện xóa dữ liệu ứng dụng (Clear Data) trong phần cài đặt Android hoặc khi bạn gỡ cài đặt ứng dụng.</p>
+                </div>
+                
+                <div lang="en">
+                    <p>To store your current gameplay state (such as virtual cash, Pride level, unlocked accessories, and session run histories), the App utilizes a local SQLite database (Room Database) installed directly on your device.</p>
+                    <p>This save data is strictly managed locally on your device and is not uploaded to any private servers owned by the developer. This data will be automatically wiped when you clear the application data in Android settings or uninstall the App.</p>
+                </div>
+            </section>
+
+            <!-- 6. Quyền riêng tư trẻ em -->
+            <section id="children" class="section-block">
+                <h2 lang="vi">Bảo vệ quyền riêng tư trẻ em</h2>
+                <h2 lang="en">Children's Privacy</h2>
+                
+                <div lang="vi">
+                    <p>Sản phẩm này chứa đựng các nội dung châm biếm, hài hước và mô phỏng xã hội nên hướng đến đối tượng người dùng từ 13 tuổi trở lên. Chúng tôi không cố ý thu thập hoặc yêu cầu thông tin cá nhân từ trẻ em dưới 13 tuổi.</p>
+                    <p>Nếu bạn là phụ huynh hoặc người giám hộ và phát hiện ra con em mình dưới 13 tuổi đã gửi thông tin cá nhân cho bên thứ ba tích hợp trong ứng dụng của chúng tôi, hãy liên hệ ngay với chúng tôi để được hỗ trợ can thiệp kịp thời.</p>
+                </div>
+                
+                <div lang="en">
+                    <p>This product contains satirical humor and social simulation targeted at users aged 13 and above. We do not knowingly collect or request personal data from children under the age of 13.</p>
+                    <p>If you are a parent or legal guardian and discover that your child under 13 has transmitted personal data through the third-party integrations inside our app, please contact us immediately to take corrective actions.</p>
+                </div>
+            </section>
+
+            <!-- 7. Quyền của người dùng -->
+            <section id="user-rights" class="section-block">
+                <h2 lang="vi">Quyền hạn của bạn</h2>
+                <h2 lang="en">Your Rights</h2>
+                
+                <div lang="vi">
+                    <p>Bạn luôn có toàn quyền kiểm soát đối với dữ liệu của mình:</p>
+                    <ul>
+                        <li><strong>Xóa tiến trình:</strong> Bạn có thể bắt đầu lại trò chơi bất kỳ lúc nào bằng cách vào mục <i>Cài đặt hệ thống > Ứng dụng > Chúa Tể Sĩ Diện > Lưu trữ > Xóa dữ liệu</i>.</li>
+                        <li><strong>Không theo dõi quảng cáo:</strong> Bạn có thể tắt tính năng cá nhân hóa quảng cáo bằng cách điều chỉnh Cài đặt Google trên thiết bị Android của bạn (Ad Settings).</li>
+                        <li><strong>Hủy nhận thông báo:</strong> Bạn có thể tắt quyền gửi thông báo (Notifications Permission) của Ứng dụng bất kỳ lúc nào trong cài đặt ứng dụng.</li>
+                    </ul>
+                </div>
+                
+                <div lang="en">
+                    <p>You always maintain complete control over your own data:</p>
+                    <ul>
+                        <li><strong>Wipe Progress:</strong> You can reset your game progress at any point by navigating to <i>System Settings > Apps > Chúa Tể Sĩ Diện > Storage > Clear Data</i>.</li>
+                        <li><strong>Opt-Out of Ad Tracking:</strong> You can disable personalized advertising by adjusting the Google Settings on your Android device (Ad Settings).</li>
+                        <li><strong>Disable Notifications:</strong> You can toggle off the App's notifications permission at any time in system app configuration.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 8. Thông tin liên hệ -->
+            <section id="contact" class="section-block">
+                <h2 lang="vi">Thông tin liên hệ & Hỗ trợ</h2>
+                <h2 lang="en">Contact & Support</h2>
+                
+                <div lang="vi">
+                    <p>Nếu bạn có bất kỳ câu hỏi, phản hồi hoặc yêu cầu liên quan đến Chính sách Quyền riêng tư này hoặc quá trình vận hành của Ứng dụng, vui lòng liên hệ với nhà phát triển qua địa chỉ thư điện tử:</p>
+                    <p style="font-weight: 600; color: var(--primary);">Email: koai.developer@gmail.com</p>
+                    <p>Chúng tôi sẽ nỗ lực phản hồi bạn trong thời gian sớm nhất có thể.</p>
+                </div>
+                
+                <div lang="en">
+                    <p>If you have any questions, feedback, or requests regarding this Privacy Policy or the operation of the App, please reach out to the developer via email:</p>
+                    <p style="font-weight: 600; color: var(--primary);">Email: support@karmasimulator.example.com</p>
+                    <p>We will do our best to respond to your inquiries as quickly as possible.</p>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <!-- Floating action to go up -->
+    <button class="btn-top" id="btnTop" aria-label="Lên đầu trang">▲</button>
+
+    <!-- Footer -->
+    <footer>
+        <p lang="vi">&copy; 2026 Chúa Tể Sĩ Diện. Bảo lưu mọi quyền.</p>
+        <p lang="en">&copy; 2026 Chúa Tể Sĩ Diện. All rights reserved.</p>
+    </footer>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Language Toggle Logic
+        const langToggle = document.getElementById('langToggle');
+        const langText = document.getElementById('langText');
+        let currentLang = 'vi';
+
+        langToggle.addEventListener('click', () => {
+            if (currentLang === 'vi') {
+                document.body.classList.add('lang-en');
+                langText.textContent = 'Tiếng Việt';
+                currentLang = 'en';
+            } else {
+                document.body.classList.remove('lang-en');
+                langText.textContent = 'English';
+                currentLang = 'vi';
+            }
+            updateTOCActiveState();
+        });
+
+        // Theme Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const themeText = document.getElementById('themeText');
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            const isLight = document.body.classList.contains('light-theme');
+            themeText.textContent = isLight ? 'Tối / Dark' : 'Sáng / Light';
+        });
+
+        // Search Filter Logic
+        const searchInput = document.getElementById('searchDocs');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            const sections = document.querySelectorAll('.section-block');
+            
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        });
+
+        // Sticky TOC Highlight Logic
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const sections = document.querySelectorAll('.section-block');
+
+        function updateTOCActiveState() {
+            let index = sections.length;
+            while(--index && window.scrollY + 150 < sections[index].offsetTop) {}
+            
+            tocLinks.forEach((link) => link.classList.remove('active'));
+            
+            const activeId = sections[index]?.getAttribute('id');
+            const activeLinks = document.querySelectorAll(`.toc-link[href="#${activeId}"]`);
+            activeLinks.forEach(link => link.classList.add('active'));
+        }
+
+        window.addEventListener('scroll', updateTOCActiveState);
+
+        // Back to Top Button Logic
+        const btnTop = document.getElementById('btnTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                btnTop.classList.add('visible');
+            } else {
+                btnTop.classList.remove('visible');
+            }
+        });
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
