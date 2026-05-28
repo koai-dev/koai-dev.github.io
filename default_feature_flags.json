@@ -3,7 +3,7 @@
   "features": {
     "feature_booking_home": {
       "ios": true,
-      "android": false
+      "android": true
     },
     "feature_booking_activity": {
       "ios": true,
