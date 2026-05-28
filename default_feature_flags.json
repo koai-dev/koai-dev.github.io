@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "features": {
     "feature_booking_home": {
       "ios": true,
@@ -11,35 +11,35 @@
     },
     "feature_booking_hotel": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_booking_golf": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_booking_flight": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_booking_event": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_booking_combo": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_booking_checkout": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_authentication": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_order": {
       "ios": true,
-      "android": true
+      "android": false
     },
     "feature_promotion": {
       "ios": true,
@@ -51,7 +51,7 @@
     },
     "feature_account": {
       "ios": true,
-      "android": true
+      "android": false
     }
   }
 }
