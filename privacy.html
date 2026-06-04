@@ -68,13 +68,13 @@
         <p>Để đảm bảo hoạt động cài đặt ổn định trên mọi hệ điều hành Android, ứng dụng cần sự cho phép của bạn với một số quyền quan trọng bao gồm:</p>
         <ul>
             <li><strong>REQUEST_INSTALL_PACKAGES</strong>: Quyền gửi yêu cầu cài đặt gói ứng dụng lên hệ thống. Bắt buộc để cài đặt trực tiếp các thành phần APK, XAPK và tệp tin đa phân mảnh sau khi xử lý thành công.</li>
-            <li><strong>QUERY_ALL_PACKAGES</strong>: Quyền liệt kê danh sách phần mềm đã cài đặt trên hệ thống để phục vụ mô-đun phân tích mã nguồn, trích xuất (backup) bản gốc, và nâng cấp.</li>
-            <li><strong>READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE</strong>: Quyền đọc và viết dữ liệu lên bộ nhớ ngoài dùng chung (đặc biệt là thư mục Download) để trích xuất hoặc gom tệp tin đóng gói OBB.</li>
+            <li><strong>Package visibility giới hạn</strong>: Ứng dụng chỉ truy vấn các ứng dụng có launcher khi bạn chủ động dùng tính năng phân tích hoặc sao lưu ứng dụng đã cài đặt. Ứng dụng không yêu cầu quyền QUERY_ALL_PACKAGES.</li>
+            <li><strong>WRITE_EXTERNAL_STORAGE</strong>: Chỉ áp dụng trên Android 9 trở xuống để xuất tệp vào thư mục Download. Trên Android mới hơn, ứng dụng dùng MediaStore hoặc Storage Access Framework.</li>
         </ul>
 
         <h3>B. Thông Tin Cá Nhân và Dữ Liệu Ứng Dụng Đã Cài Đặt</h3>
         <p>Ứng dụng cam kết <strong>không thu thập các dữ liệu định danh nhạy cảm</strong> như danh bạ, vị trí, hay thông tin cá nhân của người dùng.</p>
-        <p>Tuy nhiên, nhằm phục vụ tính năng cốt lõi là Phân tích và Sao lưu (Backup), hệ thống có thực hiện thu thập và truyền tải thông tin về <strong>Ứng dụng đã cài đặt (Installed Applications)</strong> (bao gồm Tên gói/Package Name, phiên bản, định dạng) thông qua dịch vụ Firebase Analytics. Dữ liệu này chỉ được dùng duy nhất để đo lường hiệu suất tính năng, báo cáo lỗi và cải thiện tính ổn định, hoàn toàn không được bán hay sử dụng cho mục đích quảng cáo cá nhân hóa.</p>
+        <p>Để phục vụ tính năng Phân tích và Sao lưu (Backup), ứng dụng có thể đọc thông tin cơ bản của ứng dụng đã cài đặt mà Android cho phép hiển thị qua launcher, bao gồm tên hiển thị, tên gói, phiên bản và đường dẫn tệp cài đặt. Dữ liệu này được xử lý cục bộ trên thiết bị và <strong>không được truyền tải qua Firebase Analytics, không chia sẻ cho quảng cáo, không bán cho bên thứ ba</strong>.</p>
 
         <h2>2. DỊCH VỤ BÊN THỨ BA</h2>
         <p>Nhằm mục đích phân tích chất lượng ứng dụng và tối ưu hóa hệ thống quảng cáo giúp duy trì ứng dụng hoàn toàn miễn phí, chúng tôi tích hợp một số thư viện SDK chuẩn hóa của Google:</p>
